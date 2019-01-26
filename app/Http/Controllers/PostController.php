@@ -14,7 +14,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        return 'test';
+        $http = new  \GuzzleHttp\Client;
+
+        $response = $http->get(url('http://jsonplaceholder.typicode.com/posts/1'));   
+
+        return $response;
     }
 
     /**

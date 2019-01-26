@@ -1,5 +1,6 @@
 <?php
 
+use App\Post;
 use Illuminate\Foundation\Inspiring;
 
 /*
@@ -19,5 +20,12 @@ Artisan::command('inspire', function () {
 
 
 Artisan::command('getdata', function () {
-    $this->comment("get data from api");
-})->describe('Display an inspiring quotesssss');
+
+    $http = new  \GuzzleHttp\Client;
+    $response = $http->get(url('http://jsonplaceholder.typicode.com/posts/' . rand(1,100) ));   
+
+    $data = json_decode((string)$response->getBody(), true);
+
+    $wow = Post::create($data);
+
+})->describe('Fetch data from "http://jsonplaceholder.typicode.com/posts/" Note: It fetch single data only because api server did not response if I get bulk of data');
