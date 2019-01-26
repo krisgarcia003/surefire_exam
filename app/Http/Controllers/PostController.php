@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use App\Http\Resources\Post as PostResource;
 
 class PostController extends Controller
 {
@@ -14,22 +15,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $http = new  \GuzzleHttp\Client;
-
-        $response = $http->get(url('http://jsonplaceholder.typicode.com/posts/1'));   
-
-        return $response;
+        $posts = Post::all();
+        return PostResource::collection($posts);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -53,16 +42,7 @@ class PostController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Post $post)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.

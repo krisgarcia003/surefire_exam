@@ -19,7 +19,7 @@ class Post extends JsonResource
             'id'=>$this->id,
             'title'=>$this->title,
             'body'=>$this->body,
-            'created_at'=>(string)$this->created_at->format('m/d/Y'),
+            'created_at'=>(string)$this->created_at->format('m/d/Y H:i:s'),
         ];
     }
 }

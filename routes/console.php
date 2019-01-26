@@ -22,7 +22,7 @@ Artisan::command('inspire', function () {
 Artisan::command('getdata', function () {
 
     $http = new  \GuzzleHttp\Client;
-    $response = $http->get(url('http://jsonplaceholder.typicode.com/posts/' . rand(1,100) ));   
+    $response = $http->get(url('https://jsonplaceholder.typicode.com/posts/' . rand(1,100) ));   
 
     $data = json_decode((string)$response->getBody(), true);
 
